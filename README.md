@@ -125,6 +125,9 @@ cd rewind_serverless/evaluation/throughput
 ```
 Obtaining the throughput results may take nearly 2 hour or more to complete.
 To shorten the experiment time, decrease the value of `ITER_MAX` in the `run.sh`, which represents the number of iterations.
+At the finish of the experiment, the throughput for each iteration is displayed in the terminal.
+For example, `(Iteration 1) Throughput: 17.635092 requests/second`
+
 In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
