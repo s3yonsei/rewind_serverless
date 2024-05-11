@@ -124,7 +124,7 @@ cd rewind_serverless/evaluation/throughput
 ./run.sh $DOCKER_USER
 ```
 
-In all subsequent experiments, the `user-memory` value is configured to 4096.
+The throughput results maybe consume nearly 1 hour to finish or more. In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
 ```bash
