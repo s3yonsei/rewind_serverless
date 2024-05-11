@@ -101,6 +101,8 @@ cd rewind_serverless/evaluation/throughput
 ./run.sh
 ```
 
+In all subsequent experiments, the `user-memory` value is configured to 4096.
+
 ### Figure 6
 TBD
 
