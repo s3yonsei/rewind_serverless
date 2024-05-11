@@ -31,6 +31,15 @@ do
 	
 	docker cp ${DOCKER_ID}:/tmp/proxy.out ./results/proxy${WORK}.txt
 	docker cp ${DOCKER_ID}:/tmp/launcher.out ./results/launcher${WORK}.txt
+
+	temp=`tail -n 1 ./results/launcher${WORK}.txt`
+	launcher=`echo $temp | cut -d " " -f 2`
+
+	temp=`tail -n 1 ./results/proxy${WORK}.txt`
+	proxy=`echo $temp | cut -d " " -f 2`
+
+	total_rss=`expr $launcher + $proxy`
+	echo "RSS of ${WORK}: $total_rss kB"
 done
 
 
