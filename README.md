@@ -160,3 +160,5 @@ while True:
    FUNCTION EXECUTION
 ```
 
+In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are `548` and `549`.
+
