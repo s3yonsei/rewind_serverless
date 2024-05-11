@@ -125,7 +125,7 @@ python_code := "import ctypes; syscall = ctypes.CDLL(None).syscall; syscall(550)
 
 `550` is the system call number of `rewindable` in the REWIND kernel.
 
-### checkpoint and rewind
+### Checkpoint and Rewind
 `checkpoint` system call take a REWIND's snapshot of the memory of the calling process.
 `rewind` system call restore the memory of the calling process with the REWIND scheme.
 The snapshot of the file and the rewind of files are handled by the `file_rewinder.py`.
