@@ -108,29 +108,28 @@ cd rewind_serverless/runtime/profiling
 
 ## 4. Applying REWIND
 
-To manage memory snapshot, REWIND's kernel has three new system calls: **checkpoint**, **rewind**, and **rewindable**.
-To manage file snapshot at user-level, REWIND provides Python code `file_rewinder.py`.
+REWIND's kernel introduces three new system calls - **checkpoint**, **rewind**, and **rewindable** - to manage memroy snapshots.
+At the user level, REWIND provides the Python code `file_rewinder.py` for managing file snapshots.
 
 ### rewindable system call
-`rewindable` system call sets the child process of the calling process to be a REWIND process.
-A container running on OpenWhisk creates a proxy process to communicate with OpenWhisk.
-The proxy process receives user requests from OpenWhisk and passes them to the launcher process, which actually executes the function.
-The proxt process is the first process created when the container is created, and the launcher process is created from the proxy process.
-Therefore, the `rewindable` system call is called from proxy process.
-The following example calls the `rewindable` system call from the file `rewind_serverless/runtime/mem-file/core/python3Action/proxy/openwhisk/initHandler.go`.
+The `rewindable` system call configures the child process of the calling process to be a REWIND process.
+Within a container running on OpenWhisk, a proxy process faciliates communication with OpenWhisk, receiving user requests and forwarding them to the launcher process for execution.
+This proxy process is the initial process upon container creation, with the launcher process subsequently spawned from it.
+Thus, the `rewindable` system call is invoked from the proxy process.
+The following example demonstrates invoking the `rewindable` system call from the file `rewind_serverless/runtime/mem-file/core/python3Action/proxy/openwhisk/initHandler.go`.
 
 ```bash
 python_code := "import ctypes; syscall = ctypes.CDLL(None).syscall; syscall(550)"
 ```
 
-`550` is the system call number of `rewindable` in the REWIND kernel.
+In the REWIND kernel, the system call number for `rewindable` is `550`.
 
 ### Checkpoint and Rewind
-`checkpoint` system call take a REWIND's snapshot of the memory of the calling process.
-`rewind` system call restore the memory of the calling process with the REWIND scheme.
-The snapshot of the file and the rewind of files are handled by the `file_rewinder.py`.
-The checkpoint/rewind is called from the launcher process.
-The following codes are an example in the file `rewind_serverless/runtime/mem-file/core/python3Action/lib/launcher.py`.
+The `checkpoint` system call captures a snapshot of the memory of the calling process using REWIND's schemes.
+The `rewind` system call restores the memory of the calling process according to the REWIND scheme.
+Handling both file snapshots and file rewinds is managed by `file_rewinder.py`.
+The checkpoint and rewind operations are initiated from the launcher process.
+Below is an example code snippet in the file `rewind_serverless/runtime/mem-file/core/python3Action/lib/launcher.py`.
 
 ```bash
 ...
