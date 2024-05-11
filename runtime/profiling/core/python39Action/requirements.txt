@@ -1,2 +1,0 @@
-# default packages available for action-python-v3.9
--r requirements_common.txt
