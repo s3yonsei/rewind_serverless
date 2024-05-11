@@ -32,13 +32,12 @@ This guide is assumes a clean installation of Ubuntu 20.04 server.
 We presume that the user's home directory serves as the working directory.
 ```bash
 cd ~
-git clone https://github.com/s3yonsei/rewind_atc24_ae.git
+git clone https://github.com/s3yonsei/rewind_serverless.git
 ```
 
-Obtain the required code from GitHub by execution the following commands.
+Obtain the OpenWhisk source code from GitHub by execution the following commands.
 ```bash
 cd rewind_serverless
-git clone https://github.com/s3yonsei/rewind_serverless.git
 git clone -b 1.0.0 https://github.com/apache/openwhisk.git
 ```
 
