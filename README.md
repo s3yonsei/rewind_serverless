@@ -55,7 +55,7 @@ sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-pa
 
 Configure the kernel:
 ```bash
-cd rewind_serverless/kernel
+cd rewind_serverless/rewind/kernel
 make olddefconfig
 ```
 
@@ -82,7 +82,7 @@ uname -r
 To evaluate artifact, OpenWhisk is need to set up in standalone mode.
 ```bash
 cd rewind_serverless/openwhisk
-./gradlwe core:standalone:bootRun
+./gradlew core:standalone:bootRun
 ```
 
 After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
@@ -94,7 +94,7 @@ docker login --username $DOCKER_USER
 
 To build the runtime image for REWIND, execute the following commands.
 ```bash
-cd rewind_serverless/mem-file
+cd rewind_serverless/runtime/mem-file
 ./gradlew core:python3Action:distDocker
 ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
@@ -102,7 +102,7 @@ cd rewind_serverless/mem-file
 To profile REWIND (e.g., container's RSS), an additional runtime image is necessary.
 To build the runtime image for profiling REWIND, execute the following commands.
 ```bash
-cd rewind_serverless/profiling
+cd rewind_serverless/runtime/profiling
 ./gradlew core:python3Action:distDocker
 ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
