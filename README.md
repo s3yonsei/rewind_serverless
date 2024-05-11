@@ -164,4 +164,5 @@ cd rewind_serverless/evaluation/rss
 ./run.sh $DOCKER_USER
 ```
 This step may take nearly 5 minutes or more to complete.
-
+At the finish of the experiment, the RSS of the function is displayed in the terminal.
+For example, `RSS of hello: 10800 kB`
