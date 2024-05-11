@@ -86,22 +86,22 @@ cd rewind_serverless/openwhisk
 ./gradlwe core:standalone:bootRun
 ```
 
-After starting OpenWhisk to standalone mode, OpenWhisk runtime setup is necessary.
-To setup OpenWhisk runtime, docker registry account is required such as Docker Hub.
-The following assumes that `DOCKER_USER` is configured to an appropriate value 
+After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
+To do so, Docker registry account, such as Docker Hub, is required.
+The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```bash
 docker login --username $DOCKER_USER
 ```
 
-To build runtime image for REWIND, run the following commands.
+To build the runtime image for REWIND, execute the following commands.
 ```bash
 cd rewind_serverless/mem-file
 ./gradlew core:python3Action:distDocker
 ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
-To profile REWIND (e.g., container's RSS), additional runtime image is provided.
-To build runtime image for profiling REWIND, run the following commands.
+To profile REWIND (e.g., container's RSS), an additional runtime image is necessary.
+To build the runtime image for profiling REWIND, execute the following commands.
 ```bash
 cd rewind_serverless/profiling
 ./gradlew core:python3Action:distDocker
