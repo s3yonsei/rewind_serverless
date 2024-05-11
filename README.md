@@ -154,7 +154,7 @@ For obtaining the checkpoint/rewind time, execute the following commands.
 cd rewind_serverless/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
-This process may take nearly 5 minutes or more to complete.
+This process may take nearly 10 minutes or more to complete.
 At the finish of the experiment, the checkpoint/rewind time of the function is displayed in the terminal.
 For example, `checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms`.
 
