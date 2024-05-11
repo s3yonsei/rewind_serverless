@@ -10,7 +10,8 @@ This repository reproduces the evaluation presented in the paper published at US
 - [1. Configurations](#1-configurations)
 - [2. Getting Started](#2-getting-started)
 - [3. Kernel Build](#3-kernel-build)
-- [4. OpenWhisk Setup](#4-openwhisk-setup)
+- [4. OpenWhisk Setup](#4-openwhisk-and-runtime-setup)
+- [5. Evaluation of REWIND](#5-evaluation-of-rewind)
 
 ## 1. Configurations
 
@@ -43,7 +44,7 @@ git clone -b 1.0.0 https://github.com/apache/openwhisk.git
 
 For the experiment, building the modified kernel and configuring the OpenWhisk are essential.
 Once the above commands are executed, the modified kernel and OpenWhisk will be downloaded into the `rewind_serverless/kernel` and `openwhisk` directories.
-Further details on kernel build and OpenWhisk setup are provided starting from [Section 3](#3-kernel-build) and [Section 4](#4-openwhisk-setup).
+Further details on kernel build and OpenWhisk setup are provided starting from [Section 3](#3-kernel-build) and [Section 4](#4-openwhisk-and-runtime-setup).
 
 ## 3. Kernel Build
 
@@ -77,9 +78,9 @@ Restart the system and boot into the newly built kernel. To verify the kernel ve
 uname -r
 ```
 
-## 4. OpenWhisk Setup
+## 4. OpenWhisk and Runtime Setup
 
-In the artifact evaluation, OpenWhisk is set up in standalone mode.
+To evaluate artifact, OpenWhisk is set up in standalone mode.
 ```bash
 cd rewind_serverless/openwhisk
 ./gradlwe core:standalone:bootRun
@@ -87,9 +88,10 @@ cd rewind_serverless/openwhisk
 
 ## 5. Evaluation of REWIND
 
-The following are evaluations for Fig 5-10 in the paper.
+The following are evaluations for Figure 5-10 in the paper.
+First, the experiment concerning REWIND's performance (Figure 6-10) is outlined, followed by a description of profiling REWIND's memory usage (Figure 5).
 
-### Figure 5
+### Figure 6 (throughput) and 7 (CDF of function end-to-end time)
 Prior to conducting the experiment, it's essential to configure the memory size for the container pool in OpenWhisk.
 This can be achieved by adjusting the `user-memory` value under the `container-pool` section within the `rewind_serverless/openwhisk/core/invoker/src/main/resources/application.conf` file.
 For instance, setting `user-memory = 1024 m` would allocate 1GB of memory to OpenWhisk's container pool.
@@ -103,13 +105,20 @@ cd rewind_serverless/evaluation/throughput
 
 In all subsequent experiments, the `user-memory` value is configured to 4096.
 
-### Figure 6
-TBD
+### Figure 8 (Run-to-Run execution)
+```bash
+cd rewind_serverless/evaluation/runtorun
+./run.sh
+```
 
-### Figure 7
-TBD
+### Figure 9 (Checkpoint) and 10 (Rewind)
+```bash
+cd rewind_serverless/evaluation/cr
+./run.sh
+```
 
-### Figure 8
-
-### Figure 9 and 10
-TBD
+### Figure 5 (RSS)
+```bash
+cd rewind_serverless/evaluation/rss
+./run.sh
+```
