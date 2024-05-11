@@ -156,7 +156,7 @@ cd rewind_serverless/evaluation/cr
 ```
 This process may take nearly 5 minutes or more to complete.
 At the finish of the experiment, the checkpoint/rewind time of the function is displayed in the terminal.
-For example, `checkpoint/rewind time of matmul: 0.251 / 1.124 ms`.
+For example, `checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms`.
 
 ### Figure 5 (RSS)
 
