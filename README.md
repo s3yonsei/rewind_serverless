@@ -100,7 +100,8 @@ cd rewind_serverless/mem-file
 ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
-Also, to build runtime image for profiling REWIND, run the following commands.
+To profile REWIND (e.g., container's RSS), additional runtime image is provided.
+To build runtime image for profiling REWIND, run the following commands.
 ```bash
 cd rewind_serverless/profiling
 ./gradlew core:python3Action:distDocker
@@ -121,7 +122,7 @@ In Figure 5, the `user-memory` values were configured as follows for each experi
 After configuring the `user-memory` size, executing the following commands makes the throughput results.
 ```bash
 cd rewind_serverless/evaluation/throughput
-./run.sh
+./run.sh $DOCKER_USER
 ```
 
 In all subsequent experiments, the `user-memory` value is configured to 4096.
@@ -129,17 +130,17 @@ In all subsequent experiments, the `user-memory` value is configured to 4096.
 ### Figure 8 (Run-to-Run execution time)
 ```bash
 cd rewind_serverless/evaluation/runtorun
-./run.sh
+./run.sh $DOCKER_USER
 ```
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
 ```bash
 cd rewind_serverless/evaluation/cr
-./run.sh
+./run.sh $DOCKER_USER
 ```
 
 ### Figure 5 (RSS)
 ```bash
 cd rewind_serverless/evaluation/rss
-./run.sh
+./run.sh $DOCKER_USER
 ```
