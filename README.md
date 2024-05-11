@@ -4,7 +4,8 @@
 REWIND is an innovative and efficient serverless function execution platform designed to address security and efficiency concerns.
 REWIND ensures that after each function request, the container is reset to an initial state, free from any sensitive data, including a thorough restoration of the file system to prevent data leakage.
 It incorporates a kernel-level memory snapshot management system, which significantly lowers memory usage and accelerates the rewind process.
-Additionally, REWIND optimizes runtime by reusing memory regions and leveraging the temporal locality of function executions, enhancing performance while maintaining strict data isolation between requests.
+Furthermore, REWIND has user-level file snapshot management system for container filesystem.
+REWIND also optimizes runtime by reusing memory regions and leveraging the temporal locality of function executions, enhancing performance while maintaining strict data isolation between requests.
 The REWIND is implemented on OpenWhisk and Linux.
 
 ## Related Paper
@@ -107,5 +108,18 @@ cd rewind_serverless/runtime/profiling
 
 ## 4. Secure Container with REWIND
 
+To manage memory snapshot, REWIND's kernel has three new system calls: **checkpoint**, **rewind**, and **rewindable**.
+`checkpoint` take a REWIND's snapshot of the memory of the calling process.
+`rewind` restore the memory of the calling process with the REWIND scheme.
+`rewindable` sets the child process of the calling process to be a REWIND process.
+To manage file snapshot at user-level, REWIND provides Python code.
 
+### rewindable system call
+TBD
+
+### checkpoint
+TBD
+
+### rewind
+TBD
 
