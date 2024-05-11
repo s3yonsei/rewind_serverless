@@ -1,10 +1,10 @@
 
 # REWIND: Secure, Fast, and Resource-efficient Serverless Environment
 
-REWIND is an innovative and efficient serverless function execution platform designed to address security and efficiency concerns.
+REWIND is a serverless function execution platform designed to address security and efficiency concerns.
 REWIND ensures that after each function request, the container is reset to an initial state, free from any sensitive data, including a thorough restoration of the file system to prevent data leakage.
 It incorporates a kernel-level memory snapshot management system, which significantly lowers memory usage and accelerates the rewind process.
-Furthermore, REWIND has user-level file snapshot management system for container filesystem.
+Furthermore, REWIND has user-level file snapshot management schemes for container filesystem.
 REWIND also optimizes runtime by reusing memory regions and leveraging the temporal locality of function executions, enhancing performance while maintaining strict data isolation between requests.
 The REWIND is implemented on OpenWhisk and Linux.
 
