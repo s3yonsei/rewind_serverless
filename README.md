@@ -128,28 +128,28 @@ In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
 
-To obtain the run-to-run experiment results, execute the following commands.
+To aqcuire the run-to-run experiment results, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/runtorun
 ./run.sh $DOCKER_USER
 ```
-Obtaining the results may take nearly 5 minutes or more to complete.
+This process may take nearly 5 minutes or more to complete.
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
 
-To obtain the time of the checkpoint/rewind, execute the following commands.
+For obtaining the checkpoint/rewind time, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
-Obtaining the results may take nearly 5 minutes or more to complete.
+This process may take nearly 5 minutes or more to complete.
 
 ### Figure 5 (RSS)
 
-To obtain the time of the checkpoint/rewind, execute the following commands.
+To obtain the size of the container's RSS, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/rss
 ./run.sh $DOCKER_USER
 ```
-Obtaining the results may take nearly 5 minutes or more to complete.
+This step may take nearly 5 minutes or more to complete.
 
