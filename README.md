@@ -123,23 +123,33 @@ After configuring the `user-memory` size, executing the following commands makes
 cd rewind_serverless/evaluation/throughput
 ./run.sh $DOCKER_USER
 ```
-
-The throughput results maybe consume nearly 1 hour to finish or more. In all subsequent experiments, the `user-memory` value is configured to 4096.
+Obtaining the throughput results may take nearly 1 hour or more to complete.
+In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
+
+To obtain the run-to-run experiment results, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/runtorun
 ./run.sh $DOCKER_USER
 ```
+Obtaining the results may take nearly 5 minutes or more to complete.
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
+
+To obtain the time of the checkpoint/rewind, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
+Obtaining the results may take nearly 5 minutes or more to complete.
 
 ### Figure 5 (RSS)
+
+To obtain the time of the checkpoint/rewind, execute the following commands.
 ```bash
 cd rewind_serverless/evaluation/rss
 ./run.sh $DOCKER_USER
 ```
+Obtaining the results may take nearly 5 minutes or more to complete.
+
