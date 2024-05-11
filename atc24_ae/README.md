@@ -2,6 +2,9 @@
 # USENIX ATC'24 Artifacts Evaluation
 
 ## Title: A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND
+
+Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Lee, and Jinkyu Jeong
+
 Contact: Jaehyun Song (jaehyun.song@csi.skku.edu)
 
 This repository reproduces the evaluation presented in the paper published at USENIX ATC '24.
@@ -41,7 +44,7 @@ In Figure 5, the `user-memory` values were configured as follows for each experi
 
 After configuring the `user-memory` size, executing the following commands makes the throughput results.
 ```bash
-cd rewind_serverless/evaluation/throughput
+cd rewind_serverless/atc24_ae/evaluation/throughput
 ./run.sh $DOCKER_USER
 ```
 Obtaining the throughput results may take nearly 2 hour or more to complete.
@@ -61,7 +64,7 @@ In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 To aqcuire the run-to-run experiment results, execute the following commands.
 ```bash
-cd rewind_serverless/evaluation/runtorun
+cd rewind_serverless/atc24_ae/evaluation/runtorun
 ./run.sh $DOCKER_USER
 ```
 This process may take nearly 5 minutes or more to complete.
@@ -72,7 +75,7 @@ For example, `(run-to-run #1 of linpack) time: 38.623650 ms`.
 
 For obtaining the checkpoint/rewind time, execute the following commands.
 ```bash
-cd rewind_serverless/evaluation/cr
+cd rewind_serverless/atc24_ae/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
 This process may take nearly 10 minutes or more to complete.
@@ -83,7 +86,7 @@ For example, `checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms`.
 
 To obtain the size of the container's RSS, execute the following commands.
 ```bash
-cd rewind_serverless/evaluation/rss
+cd rewind_serverless/atc24_ae/evaluation/rss
 ./run.sh $DOCKER_USER
 ```
 This step may take nearly 5 minutes or more to complete.
