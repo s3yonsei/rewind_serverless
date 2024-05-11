@@ -59,7 +59,7 @@ cd rewind_serverless/rewind/kernel
 make olddefconfig
 ```
 
-To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KETS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings ("").
+To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KEYS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings ("").
 ```bash
 CONFIG_SYSTEM_TRUSTED_KEYS=""
 CONFIG_SYSTEM_REVOCATION_KEYS=""
