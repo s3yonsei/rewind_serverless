@@ -47,8 +47,8 @@ For the experiment, building the modified kernel and configuring the OpenWhisk a
 
 Before building the kernel, ensure the following packages are installed:
 ```bash
-apt-get update
-apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-package libssl-dev bison flex libelf-dev
+sudo apt-get update
+sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-package libssl-dev bison flex libelf-dev
 ```
 
 Configure the kernel:
@@ -83,3 +83,20 @@ cd ~/rewind_atc_24_ae/openwhisk
 ./gradlwe core:standalone:bootRun
 ```
 
+## 5. Evaluation of REWIND
+
+The following are evaluations for Fig 5-10 in the paper.
+
+### Figure 5
+TBD
+
+### Figure 6
+TBD
+
+### Figure 7
+TBD
+
+### Figure 8
+
+### Figure 9 and 10
+TBD
