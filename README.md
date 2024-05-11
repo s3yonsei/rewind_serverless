@@ -80,10 +80,31 @@ uname -r
 
 ## 4. OpenWhisk and Runtime Setup
 
-To evaluate artifact, OpenWhisk is set up in standalone mode.
+To evaluate artifact, OpenWhisk is need to set up in standalone mode.
 ```bash
 cd rewind_serverless/openwhisk
 ./gradlwe core:standalone:bootRun
+```
+
+After starting OpenWhisk to standalone mode, OpenWhisk runtime setup is necessary.
+To setup OpenWhisk runtime, docker registry account is required such as Docker Hub.
+The following assumes that `DOCKER_USER` is configured to an appropriate value 
+```bash
+docker login --username $DOCKER_USER
+```
+
+To build runtime image for REWIND, run the following commands.
+```bash
+cd rewind_serverless/mem-file
+./gradlew core:python3Action:distDocker
+./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+```
+
+Also, to build runtime image for profiling REWIND, run the following commands.
+```bash
+cd rewind_serverless/profiling
+./gradlew core:python3Action:distDocker
+./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 ## 5. Evaluation of REWIND
@@ -105,13 +126,13 @@ cd rewind_serverless/evaluation/throughput
 
 In all subsequent experiments, the `user-memory` value is configured to 4096.
 
-### Figure 8 (Run-to-Run execution)
+### Figure 8 (Run-to-Run execution time)
 ```bash
 cd rewind_serverless/evaluation/runtorun
 ./run.sh
 ```
 
-### Figure 9 (Checkpoint) and 10 (Rewind)
+### Figure 9 (Checkpoint time) and 10 (Rewind time)
 ```bash
 cd rewind_serverless/evaluation/cr
 ./run.sh
