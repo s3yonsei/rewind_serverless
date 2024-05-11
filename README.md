@@ -128,6 +128,12 @@ To shorten the experiment time, decrease the value of `ITER_MAX` in the `run.sh`
 At the finish of the experiment, the throughput for each iteration is displayed in the terminal.
 For example, `(Iteration 1) Throughput: 17.635092 requests/second`
 
+To generate CDF graph, execute the following command with the # of iterations of the experiments.
+```bash
+./cdf.sh $ITERATION
+```
+After executing the above command, `cdf.eps` file is generated. It contains the CDF graph.
+
 In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
