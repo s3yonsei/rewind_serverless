@@ -126,7 +126,7 @@ cd rewind_serverless/evaluation/throughput
 Obtaining the throughput results may take nearly 2 hour or more to complete.
 To shorten the experiment time, decrease the value of `ITER_MAX` in the `run.sh`, which represents the number of iterations.
 At the finish of the experiment, the throughput for each iteration is displayed in the terminal.
-For example, `(Iteration 1) Throughput: 17.635092 requests/second`
+For example, `(Iteration 1) Throughput: 17.635092 requests/second`.
 
 To generate the CDF graph, execute the following command with the number of iterations of the experiments.
 ```bash
@@ -145,7 +145,7 @@ cd rewind_serverless/evaluation/runtorun
 ```
 This process may take nearly 5 minutes or more to complete.
 At the finish of the experiment, the execution time of the function for each run is displayed in the terminal.
-For example, `(run-to-run #1 of linpack) time: 38.623650 ms`
+For example, `(run-to-run #1 of linpack) time: 38.623650 ms`.
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
 
@@ -155,6 +155,8 @@ cd rewind_serverless/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
 This process may take nearly 5 minutes or more to complete.
+At the finish of the experiment, the checkpoint/rewind time of the function is displayed in the terminal.
+For example, `checkpoint/rewind time of matmul: 0.251 / 1.124 ms`.
 
 ### Figure 5 (RSS)
 
@@ -165,4 +167,4 @@ cd rewind_serverless/evaluation/rss
 ```
 This step may take nearly 5 minutes or more to complete.
 At the finish of the experiment, the RSS of the function is displayed in the terminal.
-For example, `RSS of hello: 10800 kB`
+For example, `RSS of hello: 10800 kB`.
