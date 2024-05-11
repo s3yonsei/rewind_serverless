@@ -24,7 +24,7 @@ Contact: Jaehyun Song (jaehyun.song@csi.skku.edu)
 - [1. Getting Started](#1-getting-started)
 - [2. Kernel Build](#2-kernel-build)
 - [3. OpenWhisk Setup](#3-openwhisk-and-runtime-setup)
-- [4. Secure Container with REWIND](#4-secure-container-with-rewind)
+- [4. Applying REWIND](#4-applying-rewind)
 
 ## 1. Getting Started
 
@@ -106,7 +106,7 @@ cd rewind_serverless/runtime/profiling
 ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
-## 4. Secure Container with REWIND
+## 4. Applying REWIND
 
 To manage memory snapshot, REWIND's kernel has three new system calls: **checkpoint**, **rewind**, and **rewindable**.
 To manage file snapshot at user-level, REWIND provides Python code `file_rewinder.py`.
