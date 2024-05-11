@@ -36,7 +36,7 @@ git clone https://github.com/s3yonsei/rewind_atc24_ae.git
 
 Obtain the required code from GitHub by execution the following commands.
 ```bash
-cd rewind_atc24_ae
+cd rewind_serverless
 git clone https://github.com/s3yonsei/rewind_serverless.git
 git clone -b 1.0.0 https://github.com/apache/openwhisk.git
 ```
@@ -81,7 +81,7 @@ uname -r
 
 In the artifact evaluation, OpenWhisk is set up in standalone mode.
 ```bash
-cd ~/rewind_atc_24_ae/openwhisk
+cd rewind_serverless/openwhisk
 ./gradlwe core:standalone:bootRun
 ```
 
@@ -91,12 +91,13 @@ The following are evaluations for Fig 5-10 in the paper.
 
 ### Figure 5
 Prior to conducting the experiment, it's essential to configure the memory size for the container pool in OpenWhisk.
-This can be achieved by adjusting the `user-memory` value under the `container-pool` section within the `openwhisk/core/invoker/src/main/resources/application.conf` file.
+This can be achieved by adjusting the `user-memory` value under the `container-pool` section within the `rewind_serverless/openwhisk/core/invoker/src/main/resources/application.conf` file.
 For instance, setting `user-memory = 1024 m` would allocate 1GB of memory to OpenWhisk's container pool.
 In Figure 5, the `user-memory` values were configured as follows for each experiment: 1024, 2560, 4096, and 8192.
 
 After configuring the `user-memory` size, executing the following commands makes the throughput results.
 ```bash
+cd rewind_serverless/evaluation/throughput
 ./run.sh
 ```
 
