@@ -18,15 +18,13 @@ Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, an
 
 Conference: 2024 USENIX Annual Technical Conference (USENIX ATC'24)
 
-Contact: Jaehyun Song (jaehyun.song@csi.skku.edu)
-
 ## Contents
 - [1. Getting Started](#1-getting-started)
 - [2. Kernel Build](#2-kernel-build)
 - [3. OpenWhisk Setup](#3-openwhisk-and-runtime-setup)
 - [4. Applying REWIND](#4-applying-rewind)
 - [5. License](#5-license)
-- [6. Contributors](#6-contributors)
+- [6. Contributors and Contacts](#6-contributors-and-contacts)
 - [7. Acknowledgements](#7-acknowledgements)
 
 ## 1. Getting Started
@@ -170,11 +168,14 @@ In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are 
 Copyright for REWIND is held by the Jaehyun Song (Sungkyunkwan University) and Jinkyu Jeong (Yonsei University).
 Feel free to reach out to us if you're interested in obtaining a license to integrate REWIND into your commercial product.
 
-## 6. Contributors
+## 6. Contributors and Contacts
 
-1. Jaehyun Song, Sungkyunkwan University
-2. Jinkyu Jeong, Younsei University
+1. Jaehyun Song, Sungkyunkwan University, jaehyun.song@csi.skku.edu
+2. Jinkyu Jeong, Younsei University, jinkyu@yonsei.ac.kr
+
+Please contact us if you have any questions or inquiries.
 
 ## 7. Acknowledgements
 TBD
+
 
