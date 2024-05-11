@@ -1,0 +1,2 @@
+# default packages available for ubuntu-python-rewind-rss
+-r requirements_common.txt

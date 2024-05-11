@@ -123,7 +123,8 @@ After configuring the `user-memory` size, executing the following commands makes
 cd rewind_serverless/evaluation/throughput
 ./run.sh $DOCKER_USER
 ```
-Obtaining the throughput results may take nearly 1 hour or more to complete.
+Obtaining the throughput results may take nearly 2 hour or more to complete.
+To shorten the experiment time, decrease the value of `ITER_MAX` in the `run.sh`, which represents the number of iterations.
 In all subsequent experiments, the `user-memory` value is configured to 4096.
 
 ### Figure 8 (Run-to-Run execution time)
@@ -134,6 +135,8 @@ cd rewind_serverless/evaluation/runtorun
 ./run.sh $DOCKER_USER
 ```
 This process may take nearly 5 minutes or more to complete.
+At the finish of the experiment, the execution time of the function for each run is displayed in the terminal.
+For example, `(run-to-run #1 of linpack) time: 38.623650 ms`
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
 
