@@ -12,11 +12,7 @@ The REWIND is implemented on OpenWhisk and Linux.
 
 Please refer the paper for a comprehensive description of REWIND:
 
-**A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**
-
-Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong
-
-Conference: 2024 USENIX Annual Technical Conference (USENIX ATC'24)
+**A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024
 
 ## Contents
 - [1. Getting Started](#1-getting-started)
@@ -163,19 +159,13 @@ while True:
 
 In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are `548` and `549`.
 
-## 5. License
+## 5. Contributors and Contacts
 
-Copyright for REWIND is held by the Jaehyun Song (Sungkyunkwan University) and Jinkyu Jeong (Yonsei University).
-Feel free to reach out to us if you're interested in obtaining a license to integrate REWIND into your commercial product.
+Jaehyun Song, Jinkyu Jeong, [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
 
-## 6. Contributors and Contacts
+Please contact us at jaehyun.song@csi.skku.edu or jinkyu@yonsei.ac.kr if you have any questions or inquiries.
 
-1. Jaehyun Song, Sungkyunkwan University, jaehyun.song@csi.skku.edu
-2. Jinkyu Jeong, Younsei University, jinkyu@yonsei.ac.kr
-
-Please contact us if you have any questions or inquiries.
-
-## 7. Acknowledgements
-TBD
+## 6. Acknowledgements
+TBU
 
 
