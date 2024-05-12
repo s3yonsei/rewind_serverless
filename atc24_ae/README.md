@@ -29,7 +29,8 @@ The evaluation can be reproduced on the hardware configurations that includes an
 This guide assumes a clean installation of Ubuntu 20.04 server.
 
 ## 2. Getting Started
-Please refer to the following instructions: [Getting Started with REWIND](https://github.com/s3yonsei/rewind_serverless/tree/main?tab=readme-ov-file#2-getting-started)
+Please refer to the instructions at the following link:
+[Getting Started with REWIND](https://github.com/s3yonsei/rewind_serverless/tree/main?tab=readme-ov-file#2-getting-started)
 
 ## 3. Evaluation of REWIND
 
