@@ -100,6 +100,15 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+To make use of all OpenWhisk features, the OpenWhisk command line tool called `wsk` is required.
+`wsk` can be downloaded from https://s.apache.org/openwhisk-cli-download, which site provides binaries for a variety of architectures.
+An example of `wsk` download for amd64 architecture is as follows:
+```bash
+$ wget https://github.com/apache/openwhisk-cli/releases/download/1.2.0/OpenWhisk_CLI-1.2.0-linux-amd64.tgz
+$ tar xvf OpenWhisk_CLI-1.2.0-linux-amd64.tgz
+$ sudo mv wsk /usr/bin
+```
+
 To evaluate artifact, OpenWhisk is need to set up in standalone mode.
 ```bash
 $ cd rewind_serverless/openwhisk
