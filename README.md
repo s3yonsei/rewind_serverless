@@ -109,32 +109,37 @@ $ tar xvf OpenWhisk_CLI-1.2.0-linux-amd64.tgz
 $ sudo mv wsk /usr/bin
 ```
 
-To evaluate artifact, OpenWhisk is need to set up in standalone mode.
+To quick start, OpenWhisk is need to set up in Standalone mode.
+To configure the Standalone OpenWhisk, run commands as follows:
 ```bash
+$ wsk property set --apihost 'http://localhost:3233' --auth '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
 $ cd rewind_serverless/openwhisk
-$ ./gradlew core:standalone:bootRun
+$ sudo su
+# ./gradlew core:standalone:bootRun
 ```
 
 After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
 To do so, Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```bash
-$ docker login --username $DOCKER_USER
+# docker login --username $DOCKER_USER
 ```
 
 To build the runtime image for REWIND:
 ```bash
 $ cd rewind_serverless/runtime/mem-file
-$ ./gradlew core:python3Action:distDocker
-$ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+$ sudo su
+# ./gradlew core:python3Action:distDocker
+# sudo ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 (Optional) To profile REWIND, an additional runtime image is necessary.
 To build the runtime image for profiling REWIND:
 ```bash
 $ cd rewind_serverless/runtime/profiling
-$ ./gradlew core:python3Action:distDocker
-$ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+$ sudo su
+# sudo ./gradlew core:python3Action:distDocker
+# sudo ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 ## 4. Applying REWIND
