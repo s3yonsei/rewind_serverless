@@ -130,7 +130,7 @@ To build the runtime image for REWIND:
 $ cd rewind_serverless/runtime/mem-file
 $ sudo su
 # ./gradlew core:python3Action:distDocker
-# sudo ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+# ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 (Optional) To profile REWIND, an additional runtime image is necessary.
@@ -138,8 +138,8 @@ To build the runtime image for profiling REWIND:
 ```
 $ cd rewind_serverless/runtime/profiling
 $ sudo su
-# sudo ./gradlew core:python3Action:distDocker
-# sudo ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+# ./gradlew core:python3Action:distDocker
+# ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 ## 4. Applying REWIND
