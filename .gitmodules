@@ -1,0 +1,4 @@
+[submodule "openwhisk"]
+	path = openwhisk
+	url = https://github.com/apache/openwhisk
+	branch = 1.0.0

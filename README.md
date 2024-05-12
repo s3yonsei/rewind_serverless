@@ -25,7 +25,7 @@ Please refer the paper for a comprehensive description of REWIND:
 
 ## 1. Getting Started
 
-We presume that the user's home directory serves as the working directory.
+The working directory is assumed to be the user's home directory.
 ```bash
 $ cd ~
 $ git clone https://github.com/s3yonsei/rewind_serverless.git
@@ -67,6 +67,8 @@ $ make -j$(nproc)
 $ sudo make modules_install
 $ sudo make install
 ```
+Adjust the value of `nproc` to suit your environment.
+For example, if your system has 4 CPU cores, consider setting it to `$ make -j4`.
 
 Restart the system and boot into the newly built kernel. To verify the kernel version:
 ```bash
