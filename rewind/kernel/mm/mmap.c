@@ -1878,8 +1878,6 @@ unsigned long mmap_region(struct file *file, unsigned long addr,
 		}
 	}
 
-no_expand_reuse:
-
 	/* REWIND: pass the path after checkpoint */
 	if (current->rewind_cnt < 1) {
 		/*

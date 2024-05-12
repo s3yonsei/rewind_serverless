@@ -25,7 +25,7 @@ Please refer the paper for a comprehensive description of REWIND:
 
 ## 1. Getting Started
 
-The working directory is assumed to be the user's home directory.
+Make your home directory the working directory.
 ```bash
 $ cd ~
 $ git clone https://github.com/s3yonsei/rewind_serverless.git
@@ -46,10 +46,10 @@ $ sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-
 Configure the kernel:
 ```bash
 $ cd rewind_serverless/rewind/kernel
-$ make olddefconfig
+$ make menuconfig
 ```
 
-To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KEYS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings ("").
+To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KEYS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings (""), if they exist.
 ```bash
 CONFIG_SYSTEM_TRUSTED_KEYS=""
 CONFIG_SYSTEM_REVOCATION_KEYS=""
@@ -58,11 +58,22 @@ CONFIG_SYSTEM_REVOCATION_KEYS=""
 Build the kernel:
 ```bash
 $ make -j$(nproc)
-$ sudo make modules_install
-$ sudo make install
+$ sudo make modules_install -j$(nproc)
+$ sudo make install -j$(nproc)
 ```
 Adjust the value of `nproc` to suit your environment.
 For example, if your system has 4 CPU cores, consider setting it to `$ make -j4`.
+
+Before restarting the system, it is necessary to configure the `GRUB_CMDLINE_LINUX` value in the GRUB configuration file.
+The path of the GRUB configuration file is `/etc/default/grub`.
+```bash
+GRUB_CMDLINE_LINUX="transparent_hugepage=never intel_idle.max_cstate=1 intel_pstate=disable numa_balancing=disable"
+```
+
+Apply modified grub file:
+```bash
+$ sudo update-grub
+```
 
 Restart the system and boot into the newly built kernel. To verify the kernel version:
 ```bash
@@ -84,15 +95,15 @@ The following assumes that `DOCKER_USER` is properly configured with an appropri
 $ docker login --username $DOCKER_USER
 ```
 
-To build the runtime image for REWIND, execute the following commands.
+To build the runtime image for REWIND:
 ```bash
 $ cd rewind_serverless/runtime/mem-file
 $ ./gradlew core:python3Action:distDocker
 $ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
-To profile REWIND (e.g., container's RSS), an additional runtime image is necessary.
-To build the runtime image for profiling REWIND, execute the following commands.
+(Optional) To profile REWIND, an additional runtime image is necessary.
+To build the runtime image for profiling REWIND:
 ```bash
 $ cd rewind_serverless/runtime/profiling
 $ ./gradlew core:python3Action:distDocker

@@ -4893,9 +4893,6 @@ static unsigned long rewind_pte_walk(struct mmu_gather *tlb,
 	int erase_page = 0;
 	int copy_page = 0;
 	int clearing = 0;
-	pte_time = 0;
-	clear_time = 0;
-	flush_time = 0;
 
 	start_pte = pte_offset_map_lock(mm, pmd, addr, &ptl);
 	pte = start_pte;
