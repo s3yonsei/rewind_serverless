@@ -133,7 +133,7 @@ $ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.
 REWIND's kernel introduces three new system calls - **checkpoint**, **rewind**, and **rewindable** - to manage memroy snapshots.
 At the user level, REWIND provides the Python code `file_rewinder.py` for managing file snapshots.
 
-### rewindable system call
+### Rewindable
 The `rewindable` system call configures the child process of the calling process to be a REWIND process.
 Within a container running on OpenWhisk, a proxy process faciliates communication with OpenWhisk, receiving user requests and forwarding them to the launcher process for execution.
 This proxy process is the initial process upon container creation, with the launcher process subsequently spawned from it.
@@ -182,7 +182,7 @@ while True:
    FUNCTION EXECUTION
 ```
 
-In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are `548` and `549`.
+In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are `548` and `549` each.
 
 
 
