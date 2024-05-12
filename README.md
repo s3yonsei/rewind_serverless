@@ -31,14 +31,8 @@ $ cd ~
 $ git clone https://github.com/s3yonsei/rewind_serverless.git
 ```
 
-Obtain the OpenWhisk source code from GitHub by execution the following commands.
-```bash
-$ cd rewind_serverless
-$ git clone -b 1.0.0 https://github.com/apache/openwhisk.git
-```
-
 For the experiment, building the modified kernel and configuring the OpenWhisk are essential.
-Once the above commands are executed, the modified kernel and OpenWhisk will be downloaded into the `rewind_serverless/kernel` and `openwhisk` directories.
+Once the above commands are executed, the modified kernel and OpenWhisk will be downloaded into the `rewind_serverless/rewind/kernel` and `rewind_serverless/openwhisk` directories.
 Further details on kernel build and OpenWhisk setup are provided starting from [Section 2](#2-kernel-build) and [Section 3](#3-openwhisk-and-runtime-setup).
 
 ## 2. Kernel Build
