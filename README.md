@@ -14,8 +14,7 @@ Please refer the paper for a comprehensive description of REWIND:
 
 **A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024 (to appear)
 
-**Contacts**: Jaehyun Song, Jinkyu Jeong, [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
-Please contact us at jaehyun.song@csi.skku.edu or jinkyu@yonsei.ac.kr if you have any questions or inquiries.
+**Contacts**: Please contact us if you have any questions. [Jaehyun Song](mailto:jaehyun.song@csi.skku.edu), [Jinkyu Jeong](mailto:jinkyu@yonsei.ac.kr), [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
 
 
 ## Contents
@@ -23,7 +22,6 @@ Please contact us at jaehyun.song@csi.skku.edu or jinkyu@yonsei.ac.kr if you hav
 - [2. Kernel Build](#2-kernel-build)
 - [3. OpenWhisk Setup](#3-openwhisk-and-runtime-setup)
 - [4. Applying REWIND](#4-applying-rewind)
-- [5. Contributors and Contacts](#5-contributors-and-contacts)
 
 ## 1. Getting Started
 
