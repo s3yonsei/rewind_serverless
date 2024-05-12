@@ -27,14 +27,14 @@ Please refer the paper for a comprehensive description of REWIND:
 
 We presume that the user's home directory serves as the working directory.
 ```bash
-cd ~
-git clone https://github.com/s3yonsei/rewind_serverless.git
+$ cd ~
+$ git clone https://github.com/s3yonsei/rewind_serverless.git
 ```
 
 Obtain the OpenWhisk source code from GitHub by execution the following commands.
 ```bash
-cd rewind_serverless
-git clone -b 1.0.0 https://github.com/apache/openwhisk.git
+$ cd rewind_serverless
+$ git clone -b 1.0.0 https://github.com/apache/openwhisk.git
 ```
 
 For the experiment, building the modified kernel and configuring the OpenWhisk are essential.
@@ -45,14 +45,14 @@ Further details on kernel build and OpenWhisk setup are provided starting from [
 
 Before building the kernel, ensure the following packages are installed:
 ```bash
-sudo apt-get update
-sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-package libssl-dev bison flex libelf-dev
+$ sudo apt-get update
+$ sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-package libssl-dev bison flex libelf-dev
 ```
 
 Configure the kernel:
 ```bash
-cd rewind_serverless/rewind/kernel
-make olddefconfig
+$ cd rewind_serverless/rewind/kernel
+$ make olddefconfig
 ```
 
 To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KEYS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings ("").
@@ -63,44 +63,44 @@ CONFIG_SYSTEM_REVOCATION_KEYS=""
 
 Build the kernel:
 ```bash
-make -j$(nproc)
-sudo make modules_install
-sudo make install
+$ make -j$(nproc)
+$ sudo make modules_install
+$ sudo make install
 ```
 
 Restart the system and boot into the newly built kernel. To verify the kernel version:
 ```bash
-uname -r
+$ uname -r
 ```
 
 ## 3. OpenWhisk and Runtime Setup
 
 To evaluate artifact, OpenWhisk is need to set up in standalone mode.
 ```bash
-cd rewind_serverless/openwhisk
-./gradlew core:standalone:bootRun
+$ cd rewind_serverless/openwhisk
+$ ./gradlew core:standalone:bootRun
 ```
 
 After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
 To do so, Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```bash
-docker login --username $DOCKER_USER
+$ docker login --username $DOCKER_USER
 ```
 
 To build the runtime image for REWIND, execute the following commands.
 ```bash
-cd rewind_serverless/runtime/mem-file
-./gradlew core:python3Action:distDocker
-./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+$ cd rewind_serverless/runtime/mem-file
+$ ./gradlew core:python3Action:distDocker
+$ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 To profile REWIND (e.g., container's RSS), an additional runtime image is necessary.
 To build the runtime image for profiling REWIND, execute the following commands.
 ```bash
-cd rewind_serverless/runtime/profiling
-./gradlew core:python3Action:distDocker
-./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+$ cd rewind_serverless/runtime/profiling
+$ ./gradlew core:python3Action:distDocker
+$ ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
 ```
 
 ## 4. Applying REWIND
