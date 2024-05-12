@@ -12,7 +12,7 @@ The REWIND is implemented on OpenWhisk and Linux.
 
 Please refer the paper for a comprehensive description of REWIND:
 
-**A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024
+**A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024 (to appear)
 
 ## Contents
 - [1. Getting Started](#1-getting-started)
@@ -20,7 +20,6 @@ Please refer the paper for a comprehensive description of REWIND:
 - [3. OpenWhisk Setup](#3-openwhisk-and-runtime-setup)
 - [4. Applying REWIND](#4-applying-rewind)
 - [5. Contributors and Contacts](#5-contributors-and-contacts)
-- [6. Acknowledgements](#6-acknowledgements)
 
 ## 1. Getting Started
 
@@ -158,13 +157,10 @@ while True:
 
 In the REWIND kernel, the system call numbers for `checkpoint` and `rewind` are `548` and `549`.
 
-## 5. Contributors and Contacts
+## 5. Contacts
 
 Jaehyun Song, Jinkyu Jeong, [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
-
 Please contact us at jaehyun.song@csi.skku.edu or jinkyu@yonsei.ac.kr if you have any questions or inquiries.
 
-## 6. Acknowledgements
-TBU
 
 
