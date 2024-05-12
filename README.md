@@ -19,9 +19,8 @@ Please refer the paper for a comprehensive description of REWIND:
 - [2. Kernel Build](#2-kernel-build)
 - [3. OpenWhisk Setup](#3-openwhisk-and-runtime-setup)
 - [4. Applying REWIND](#4-applying-rewind)
-- [5. License](#5-license)
-- [6. Contributors and Contacts](#6-contributors-and-contacts)
-- [7. Acknowledgements](#7-acknowledgements)
+- [5. Contributors and Contacts](#5-contributors-and-contacts)
+- [6. Acknowledgements](#6-acknowledgements)
 
 ## 1. Getting Started
 
