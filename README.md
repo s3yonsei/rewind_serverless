@@ -26,7 +26,7 @@ Please refer the paper for a comprehensive description of REWIND:
 ## 1. Getting Started
 
 Make your home directory the working directory.
-```bash
+```
 $ cd ~
 $ git clone --recursive https://github.com/s3yonsei/rewind_serverless.git
 ```
@@ -38,25 +38,25 @@ Further details on kernel build and OpenWhisk setup are provided starting from [
 ## 2. Kernel Build
 
 Before building the kernel, ensure the following packages are installed:
-```bash
+```
 $ sudo apt-get update
 $ sudo apt-get install build-essential libncurses5 libncurses5-dev bin86 kernel-package libssl-dev bison flex libelf-dev
 ```
 
 Configure the kernel:
-```bash
+```
 $ cd rewind_serverless/rewind/kernel
 $ make menuconfig
 ```
 
 To prepare for building, adjust the `.config` file by setting `CONFIG_SYSTEM_TRUSTED_KEYS` and `CONFIG_SYSTEM_REVOCATION_KEYS` to empty strings (""), if they exist.
-```bash
+```
 CONFIG_SYSTEM_TRUSTED_KEYS=""
 CONFIG_SYSTEM_REVOCATION_KEYS=""
 ```
 
 Build the kernel:
-```bash
+```
 $ make -j$(nproc)
 $ sudo make modules_install -j$(nproc)
 $ sudo make install -j$(nproc)
@@ -66,24 +66,24 @@ For example, if your system has 4 CPU cores, consider setting it to `$ make -j4`
 
 Before restarting the system, it is necessary to configure the `GRUB_CMDLINE_LINUX` value in the GRUB configuration file.
 The path of the GRUB configuration file is `/etc/default/grub`.
-```bash
+```
 GRUB_CMDLINE_LINUX="transparent_hugepage=never intel_idle.max_cstate=1 intel_pstate=disable numa_balancing=disable"
 ```
 
 Apply modified grub file:
-```bash
+```
 $ sudo update-grub
 ```
 
 Restart the system and boot into the newly built kernel. To verify the kernel version:
-```bash
+```
 $ uname -r
 ```
 
 ## 3. OpenWhisk and Runtime Setup
 
 Before setting the OpenWhisk, ensure the following packages are installed:
-```bash
+```
 # Install JAVA, NPM, and NodeJS
 $ sudo apt install openjdk-11-jre npm nodejs
 
@@ -103,7 +103,7 @@ $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugi
 To make use of all OpenWhisk features, the OpenWhisk command line tool called `wsk` is required.
 `wsk` can be downloaded from https://s.apache.org/openwhisk-cli-download, which site provides binaries for a variety of architectures.
 An example of `wsk` download for amd64 architecture is as follows:
-```bash
+```
 $ wget https://github.com/apache/openwhisk-cli/releases/download/1.2.0/OpenWhisk_CLI-1.2.0-linux-amd64.tgz
 $ tar xvf OpenWhisk_CLI-1.2.0-linux-amd64.tgz
 $ sudo mv wsk /usr/bin
@@ -111,7 +111,7 @@ $ sudo mv wsk /usr/bin
 
 To quick start, OpenWhisk is need to set up in Standalone mode.
 To configure the Standalone OpenWhisk, run commands as follows:
-```bash
+```
 $ wsk property set --apihost 'http://localhost:3233' --auth '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
 $ cd rewind_serverless/openwhisk
 $ sudo su
@@ -121,12 +121,12 @@ $ sudo su
 After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
 To do so, Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
-```bash
+```
 # docker login --username $DOCKER_USER
 ```
 
 To build the runtime image for REWIND:
-```bash
+```
 $ cd rewind_serverless/runtime/mem-file
 $ sudo su
 # ./gradlew core:python3Action:distDocker
@@ -135,7 +135,7 @@ $ sudo su
 
 (Optional) To profile REWIND, an additional runtime image is necessary.
 To build the runtime image for profiling REWIND:
-```bash
+```
 $ cd rewind_serverless/runtime/profiling
 $ sudo su
 # sudo ./gradlew core:python3Action:distDocker
@@ -154,7 +154,7 @@ This proxy process is the initial process upon container creation, with the laun
 Thus, the `rewindable` system call is invoked from the proxy process.
 The following example demonstrates invoking the `rewindable` system call from the file `rewind_serverless/runtime/mem-file/core/python3Action/proxy/openwhisk/initHandler.go`.
 
-```bash
+```
 python_code := "import ctypes; syscall = ctypes.CDLL(None).syscall; syscall(550)"
 ```
 
@@ -167,7 +167,7 @@ Handling both file snapshots and file rewinds is managed by `file_rewinder.py`.
 The checkpoint and rewind operations are initiated from the launcher process.
 Below is an example code snippet in the file `rewind_serverless/runtime/mem-file/core/python3Action/lib/launcher.py`.
 
-```bash
+```
 ...
 import os
 import ctypes
