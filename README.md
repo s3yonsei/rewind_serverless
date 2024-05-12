@@ -122,6 +122,7 @@ After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime 
 To do so, Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```
+$ sudo su
 # docker login --username $DOCKER_USER
 ```
 
