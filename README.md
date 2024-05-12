@@ -14,8 +14,7 @@ Please refer the paper for a comprehensive description of REWIND:
 
 **A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024 (to appear)
 
-* Contacts
-Jaehyun Song, Jinkyu Jeong, [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
+**Contacts**: Jaehyun Song, Jinkyu Jeong, [Scalable Systems Software Lab](https://cslab.yonsei.ac.kr), Yonsei University, South Korea
 Please contact us at jaehyun.song@csi.skku.edu or jinkyu@yonsei.ac.kr if you have any questions or inquiries.
 
 
