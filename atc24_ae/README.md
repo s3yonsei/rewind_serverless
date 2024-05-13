@@ -71,15 +71,15 @@ If the REWIND configuration is successful, the following result should be displa
 The following section reproduces evaluations for Figure 5-10 in the paper.
 We first outline the experiments on REWIND's performance (Figure 6-10) and then describe how to profile REWIND's memory usage (Figure 5).
 
-Before get started, OpenWhisk configuration is necessary if your system has multiple NUMA nodes.
+Before getting start, OpenWhisk configuration is necessary if your system has multiple NUMA nodes.
 To check NUMA nodes, run next commands:
 ```
 $ lscpu | grep "NUMA node(s)"
 ```
-If the printed results is larger than 1, configuring OpenWhisk to launch Docker containers on single NUMA node is required for removing NUMA effects.
+If the printed result is larger than 1, configuring OpenWhisk is required to launch Docker containers on single NUMA node for removing NUMA effects.
 
 The following example is configuring OpenWhisk to launch Docker containers fixed to NUMA node 0.
-To check NUMA node 0, run next commands:
+To check the core numbers in NUMA node 0, run the next command:
 ```
 $ lscpu | grep "NUMA node0"
 ```
@@ -90,7 +90,7 @@ NUMA node0 CPU(s): 0,2,4,6,8,10,12,14,16,18,20,22
 ```
 
 Code for launching Docker container in OpenWhisk is implemented in the file `rewind_serverless/openwhisk/core/invoker/src/main/scala/org/apache/openwhisk/core/containerpool/docker/DockerContainer.scala`
-Insert following code snippets starting from line 43:
+Insert following code snippet starting from line 43:
 ```
 object cpus {
     var useCPU: Int = 0
@@ -102,8 +102,8 @@ object cpus {
     }
 }
 ```
-The value `24` in the code snippets means total CPU cores in example system.
-Modifing following code is also required:
+The value `24` in the code snippet means the number of total CPU cores in example system.
+Modifying the following code is also required:
 ```
 val args = Seq(
   "--cpu-shares",
@@ -121,7 +121,7 @@ val args = Seq(
   name.map(n => Seq("--name", n)).getOrElse(Seq.empty) ++
   params
 ```
-Change above code to follows:
+Change the above code as follows:
 ```
 val useCPU = cpus.getCPU()
 val cpuset = Seq("--cpuset-cpus", useCPU,toString)
