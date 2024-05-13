@@ -1,0 +1,2 @@
+# default packages available for ubuntu-python-rewind-mem
+-r requirements_common.txt

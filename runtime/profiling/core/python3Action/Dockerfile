@@ -77,7 +77,7 @@ ADD lib/launcher.py /lib/launcher.py
 # the launcher must wait for an ack
 ENV OW_WAIT_FOR_ACK=1
 # execution environment
-ENV OW_EXECUTION_ENV=openwhisk/ubuntu-python-rewind-rss
+ENV OW_EXECUTION_ENV=openwhisk/ubuntu-python-rewind-profile
 # compiler script
 ENV OW_COMPILER=/bin/compile
 

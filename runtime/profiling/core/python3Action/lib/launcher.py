@@ -70,13 +70,20 @@ launcher_path = "/proc/" + str(os.getpid()) + "/status"
 env = os.environ
 i = 0
 while True:
+  checktime = 0
   if i == 1:
+    check_start = time.time()
     file_sock.send(CHK.encode('utf-8'))
     syscall(548, 1)
+    checktime = time.time() - check_start
   if i > 1:
+    rewind_log = open("/tmp/rewind.out", 'a')
+    rewind_log.write(time.time())
+    rewind_log.close()
     file_sock.send(REW.encode('utf-8'))
     syscall(549, 2)
 
+  timestamp = time.time()
   i +=1
   line = stdin.readline()
   if not line: break
@@ -93,6 +100,8 @@ while True:
     res = main(payload)
     TrueTime = time.time() - start
     res["TrueTime"] = TrueTime
+    res["CheckpointTime"] = checktime
+    res["Timestamp"] = timestamp
   except Exception as ex:
     print(traceback.format_exc(), file=stderr)
     res = {"error": str(ex)}

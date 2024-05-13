@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-ext.dockerImageName = 'ubuntu-python-rewind-rss'
+ext.dockerImageName = 'ubuntu-python-rewind-profile'
 apply from: '../../gradle/docker.gradle'
 
 distDocker.dependsOn 'copyReqrCommon'

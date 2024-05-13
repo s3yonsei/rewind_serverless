@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-IMG=whisk/ubuntu-python-rewind-rss:latest
+IMG=whisk/ubuntu-python-rewind-profile:latest
 
 build:
 	docker build -t $(IMG) .
