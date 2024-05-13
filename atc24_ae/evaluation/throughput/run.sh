@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER="ubuntu-python-rewind"
+DOCKER="ubuntu-python-rewind-mem"
 
 ITER_MAX=10
 ITER_CNT=0

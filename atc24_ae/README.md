@@ -1,11 +1,7 @@
 
 # USENIX ATC'24 Artifacts Evaluation
 
-## Title: A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND
-
-Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong
-
-Contact: Jaehyun Song (jaehyun.song@csi.skku.edu)
+**A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND**, Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong, Proceedings of the 2024 USENIX Annual Technical Conference (USENIX ATC '24), Santa Clara, CA, US, July 10-12, 2024 (to appear)
 
 This repository reproduces the evaluation presented in the paper published at USENIX ATC '24.
 
@@ -140,6 +136,12 @@ val args = Seq(
   params
 ```
 
+This section requires gnuplot.
+Install the gnuplot package:
+```
+sudo apt-get install gnuplot
+```
+
 ### Figure 6 (throughput) and 7 (CDF of function end-to-end time)
 Before conducting the experiment, it is required to configure the memory size for the container pool in OpenWhisk.
 This can be achieved by adjusting the `user-memory` value under the `container-pool` section within the `rewind_serverless/openwhisk/core/invoker/src/main/resources/application.conf` file.
@@ -165,7 +167,7 @@ $ ./cdf.sh $ITERATION
 ```
 This creates a file named `cdf.eps`, containing the CDF graph.
 
-For all subsequent experiments, the `user-memory` value was fixed at 4096.
+For all subsequent experiments, the `user-memory` value was fixed at 8192.
 
 ### Figure 8 (Run-to-Run execution time)
 

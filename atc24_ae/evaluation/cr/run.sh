@@ -1,6 +1,6 @@
 N=20
 LIST=("hello" "pkg4" "float" "linpack" "matmul" "pyaes" "chameleon" "imgproc" "vidpro" "train" "lr")
-DOCKER="ubuntu-python-rewind"
+DOCKER="ubuntu-python-rewind-profile"
 
 if [ "$#" -lt 1 ]
 then
@@ -35,8 +35,8 @@ done
 
 for WORK in ${LIST[@]}
 do
-	cat ./results/${WORK}.out | grep checkpoint > temp_check.out
-	cat ./results/${WORK}.out | grep rewind > temp_rewind.out
+	cat ./results/${WORK}.out | grep CheckpointTime > temp_check.out
+	cat ./results/${WORK}.out | grep timestamp > temp_rewind.out
 
 	CHECK=0
 	REWIND=0
@@ -55,7 +55,7 @@ do
 		REWIND=`expr $CHECK + $temp`
 	done
 
-	CHECK=`echo $CHECK | awk '{printf "%.6f", $1 / 20000000}'`
+	CHECK=`echo $CHECK | awk '{printf "%.6f", $1 / 1000000}'`
 	REWIND=`echo $REWIND | awk '{printf "%.6f", $1 / 20000000}'`
 
 	echo "checkpoint/rewind time of ${WORK}: $CHECK / $REWIND ms"
