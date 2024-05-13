@@ -131,7 +131,13 @@ $ sudo docker login --username $(DOCKER_USER)
 
 To build the runtime image for REWIND:
 ```
+/* Full REWIND */
 $ cd rewind_serverless/runtime/mem-file
+$ sudo ./gradlew core:python3Action:distDocker
+$ sudo ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
+
+/* Memory-only REWIND */
+$ cd rewind_serverless/runtime/mem-only
 $ sudo ./gradlew core:python3Action:distDocker
 $ sudo ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
 ```
