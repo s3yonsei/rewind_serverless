@@ -2,6 +2,17 @@ N=3
 LIST=("hello" "pkg4" "float" "linpack" "matmul" "pyaes" "chameleon" "imgproc" "vidproc" "train" "lr")
 DOCKER="ubuntu-python-rewind-rss"
 
+if [ "$#" -lt 1 ]
+then
+	echo "[ERROR] Enter DOCKER_USER"
+	exit 1
+fi
+
+if [ ! -d "./results" ]
+then
+	mkdir ./results
+fi
+
 for WORK in ${LIST[@]}
 do
 	# Update function

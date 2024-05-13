@@ -69,7 +69,7 @@ If the REWIND configuration is successful, the following result should be displa
 ## 3. Evaluation of REWIND
 
 The following section reproduces evaluations for Figure 5-10 in the paper.
-We first outline the experiments on REWIND's performance (Figure 6-10) and then describe how to profile REWIND's memory usage (Figure 5).
+We first outline the experiments on REWIND's performance (Figure 6-8) and then describe how to profile REWIND (Figure 5, 9, 10).
 
 Before getting start, OpenWhisk configuration is necessary if your system has multiple NUMA nodes.
 To check NUMA nodes, run next commands:
@@ -89,7 +89,7 @@ An example of printed output is as follows:
 NUMA node0 CPU(s): 0,2,4,6,8,10,12,14,16,18,20,22
 ```
 
-Code for launching Docker container in OpenWhisk is implemented in the file `rewind_serverless/openwhisk/core/invoker/src/main/scala/org/apache/openwhisk/core/containerpool/docker/DockerContainer.scala`
+Code for launching Docker container in OpenWhisk is implemented in the file `rewind_serverless/openwhisk/core/invoker/src/main/scala/org/apache/openwhisk/core/containerpool/docker/DockerContainer.scala`.
 Insert following code snippet starting from line 43:
 ```
 object cpus {
@@ -186,20 +186,6 @@ An example of printed output is as follows:
 (run-to-run #1 of linpack) time: 38.623650 ms
 ```
 
-### Figure 9 (Checkpoint time) and 10 (Rewind time)
-
-Run next commands for the checkpoint/rewind time:
-```
-$ cd rewind_serverless/atc24_ae/evaluation/cr
-$ sudo su
-# ./run.sh $(DOCKER_USER)
-```
-It takes approximately 10 minutes for the results to come out.
-When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.
-An example of printed output is as follows:
-```
-checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms
-```
 
 ### Figure 5 (Resident Set Size)
 
@@ -215,3 +201,19 @@ An example of printed output is as follows:
 ```
 RSS of hello: 10800 kB
 ```
+
+### Figure 9 (Checkpoint time) and 10 (Rewind time)
+
+Run next commands for the checkpoint/rewind time:
+```
+$ cd rewind_serverless/atc24_ae/evaluation/cr
+$ sudo su
+# ./run.sh $(DOCKER_USER)
+```
+It takes approximately 10 minutes for the results to come out.
+When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.
+An example of printed output is as follows:
+```
+checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms
+```
+

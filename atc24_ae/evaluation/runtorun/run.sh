@@ -2,6 +2,17 @@ LIST=("linpack" "matmul")
 DOCKER="ubuntu-python-rewind"
 ITER_MAX=3
 
+if [ "$#" -lt 1 ]
+then
+	echo "[ERROR] Enter DOCKER_USER"
+	exit 1
+fi
+
+if [ ! -d "./results" ]
+then
+	mkdir ./results
+fi
+
 for WORK in ${LIST[@]}
 do
 	# Update function

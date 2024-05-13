@@ -2008,6 +2008,17 @@ REQUESTS=(
 "pagerank"
 )
 
+if [ "$#" -lt 1 ]
+then
+	echo "[ERROR] Enter DOCKER_USER"
+	exit 1
+fi
+
+if [ ! -d "./results" ]
+then
+	mkdir ./results
+fi
+
 while [ ${ITER_CNT} -lt ${ITER_MAX} ]
 do
 	TIME=`date +%H:%M:%S`
