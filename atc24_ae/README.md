@@ -16,7 +16,7 @@ This repository reproduces the evaluation presented in the paper published at US
 
 ## 1. Configurations
 
-The experimental environment was performed on the following hardware configurations:
+The experimental environment was set up on the following hardware configurations:
 
 | **Component**       | **Specification**
 |---------------------|--------------------------------------------|
@@ -32,22 +32,22 @@ This guide assumes a clean installation of Ubuntu 20.04 server.
 Please refer to the instructions at the following link:
 [Getting Started with REWIND](https://github.com/s3yonsei/rewind_serverless/tree/main?tab=readme-ov-file#2-getting-started)
 
-Running REWIND will require three terminals, the first one running the OpenWhisk, and a second one running the file rewind Python code, and a final one for sending function request to the OpenWhisk
-To verify that the configuration of the REWIND has been successfully completed, run next commands:
+Running REWIND will require three terminals, the first one running the OpenWhisk, and the second one running the file rewind Python code, and the final one for sending function request to the OpenWhisk.
+To verify that the configuration of the REWIND has been successfully completed, run next commands in the first terminal:
 ```
 $ cd rewind_serverless/openwhisk
 $ sudo su
 # ./gradlew core:standalone:bootRun
 ```
 
-In a new terminal (do not close the 1st one):
+Second terminal (do not close the 1st one):
 ```
 $ cd rewind_serverless/rewind
 $ sudo su
 # python3 file_rewinder.py
 ```
 
-In a new terminal (do not close the 1st/2nd ones):
+Third terminal (do not close the 1st/2nd ones):
 ```
 $ cd rewind_serverless/atc24_ae/evaluation
 $ sudo su
@@ -55,7 +55,7 @@ $ sudo su
 # wsk action invoke helloworld --result
 ```
 
-If the REWIND configuration is successful, the following result should be displayed in the terminal.
+If the REWIND configuration is successful, the following result should be displayed in the third terminal.
 ```
 {
     "TrueTime": 0.0000045299530029296875,
@@ -68,8 +68,8 @@ If the REWIND configuration is successful, the following result should be displa
 
 ## 3. Evaluation of REWIND
 
-The followings are evaluations for Figure 5-10 in the paper.
-We first outlines the experiments on REWIND's performance (Figure 6-10) and then describe how to profile REWIND's memory usage (Figure 5).
+The following section reproduces evaluations for Figure 5-10 in the paper.
+We first outline the experiments on REWIND's performance (Figure 6-10) and then describe how to profile REWIND's memory usage (Figure 5).
 
 ### Figure 6 (throughput) and 7 (CDF of function end-to-end time)
 Before conducting the experiment, it is required to configure the memory size for the container pool in OpenWhisk.

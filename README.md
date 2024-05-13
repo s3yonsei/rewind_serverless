@@ -6,7 +6,7 @@ REWIND ensures that after each function request, the container is reset to an in
 It incorporates a kernel-level memory snapshot management system, which significantly lowers memory usage and accelerates the rewind process.
 Furthermore, REWIND has user-level file snapshot management schemes for container filesystem.
 REWIND also optimizes runtime by reusing memory regions and leveraging the temporal locality of function executions, enhancing performance while maintaining strict data isolation between requests.
-The REWIND is implemented on OpenWhisk and Linux.
+REWIND is implemented on OpenWhisk and Linux.
 
 ## Related Paper
 
@@ -25,7 +25,7 @@ Please refer the paper for a comprehensive description of REWIND:
 
 ## 1. Getting Started
 
-Make your home directory the working directory.
+Make your home directory as the working directory.
 ```
 $ cd ~
 $ git clone --recursive https://github.com/s3yonsei/rewind_serverless.git
@@ -75,7 +75,12 @@ Apply modified grub file:
 $ sudo update-grub
 ```
 
-Restart the system and boot into the newly built kernel. To verify the kernel version:
+Restart the system and boot into the newly built kernel:
+```
+$ sudo reboot
+```
+
+To verify the kernel version:
 ```
 $ uname -r
 ```
@@ -101,7 +106,7 @@ $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugi
 ```
 
 To make use of all OpenWhisk features, the OpenWhisk command line tool called `wsk` is required.
-`wsk` can be downloaded from https://s.apache.org/openwhisk-cli-download, which site provides binaries for a variety of architectures.
+`wsk` can be downloaded from https://s.apache.org/openwhisk-cli-download, which provides binaries for a variety of architectures.
 An example of `wsk` download for amd64 architecture is as follows:
 ```
 $ wget https://github.com/apache/openwhisk-cli/releases/download/1.2.0/OpenWhisk_CLI-1.2.0-linux-amd64.tgz
@@ -109,8 +114,8 @@ $ tar xvf OpenWhisk_CLI-1.2.0-linux-amd64.tgz
 $ sudo mv wsk /usr/bin
 ```
 
-To quick start, OpenWhisk is need to set up in Standalone mode.
-To configure the Standalone OpenWhisk, run commands as follows:
+To quick start, OpenWhisk needs to be set up in Standalone mode.
+To configure the Standalone OpenWhisk, run the following commands:
 ```
 $ wsk property set --apihost 'http://localhost:3233' --auth '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
 $ cd rewind_serverless/openwhisk
@@ -118,8 +123,8 @@ $ sudo su
 # ./gradlew core:standalone:bootRun
 ```
 
-After initiating OpenWhisk in standalone mode, setting up the OpenWhisk runtime becomes imperative.
-To do so, Docker registry account, such as Docker Hub, is required.
+After initiating OpenWhisk in standalone mode, the next step is to set up the OpenWhisk runtime.
+To do so, a Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```
 $ sudo su
@@ -145,7 +150,7 @@ $ sudo su
 
 ## 4. Applying REWIND
 
-REWIND's kernel introduces three new system calls - **checkpoint**, **rewind**, and **rewindable** - to manage memroy snapshots.
+REWIND's kernel introduces three new system calls - **checkpoint**, **rewind**, and **rewindable** - to manage memory snapshots.
 At the user level, REWIND provides the Python code `file_rewinder.py` for managing file snapshots.
 
 ### Rewindable
@@ -163,7 +168,7 @@ In the REWIND kernel, the system call number for `rewindable` is `550`.
 
 ### Checkpoint and Rewind
 The `checkpoint` system call captures a snapshot of the memory of the calling process using REWIND's schemes.
-The `rewind` system call restores the memory of the calling process according to the REWIND scheme.
+The `rewind` system call rewinds the memory of the calling process according to the REWIND scheme.
 Handling both file snapshots and file rewinds is managed by `file_rewinder.py`.
 The checkpoint and rewind operations are initiated from the launcher process.
 Below is an example code snippet in the file `rewind_serverless/runtime/mem-file/core/python3Action/lib/launcher.py`.
