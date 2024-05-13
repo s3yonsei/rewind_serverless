@@ -32,6 +32,38 @@ This guide assumes a clean installation of Ubuntu 20.04 server.
 Please refer to the instructions at the following link:
 [Getting Started with REWIND](https://github.com/s3yonsei/rewind_serverless/tree/main?tab=readme-ov-file#2-getting-started)
 
+Running REWIND will require three terminals, the first one running the OpenWhisk, and a second one running the file rewind Python code, and a final one for sending function request to the OpenWhisk
+To verify that the configuration of the REWIND has been successfully completed, run next commands:
+```
+$ cd rewind_serverless/openwhisk
+$ sudo su
+# ./gradlew core:standalone:bootRun
+```
+
+In a new terminal (do not close the 1st one):
+```
+$ cd rewind_serverless/rewind
+$ sudo su
+# python3 file_rewinder.py
+```
+
+In a new terminal (do not close the 1st/2nd ones):
+```
+$ cd rewind_serverless/atc24_ae/evaluation
+$ sudo su
+# wsk action update --memory 128 helloworld ./workloads/hello.py --docker $DOCKER_USER/ubuntu-python-rewind
+# wsk action invoke helloworld --result
+```
+
+If the REWIND configuration is successful, the following result should be displayed in the terminal.
+{
+    "TrueTime": 0.0000045299530029296875,
+    "greeting": "Hello stranger!",
+    "runtime_end": 1715565302350653411,
+    "runtime_start": 1715565302350417521,
+    "startTime": 1715565302.3505592
+}
+
 ## 3. Evaluation of REWIND
 
 The followings are evaluations for Figure 5-10 in the paper.
@@ -43,8 +75,8 @@ This can be achieved by adjusting the `user-memory` value under the `container-p
 For instance, setting `user-memory = 1024 m` would allocate 1GB of memory to OpenWhisk's container pool.
 In Figure 5, the `user-memory` values were configured as follows for each experiment: 1024, 2560, 4096, and 8192.
 
-After configuring the `user-memory` size, run next commands for throughput results.
-```bash
+After configuring the `user-memory` size, run next commands for throughput results:
+```
 cd rewind_serverless/atc24_ae/evaluation/throughput
 ./run.sh $DOCKER_USER
 ```
@@ -52,12 +84,12 @@ It takes approximately 2 hours for the results to come out.
 To shorten the experiment time, you can decrease the `ITER_MAX` value in the `run.sh`, which is a value indicating the number of iterations.
 When the experiment is finished, the throughput for each iteration is displayed in the terminal.
 An example of printed output is as follows:
-```bash
+```
 (Iteration 1) Throughput: 17.635092 requests/second
 ```
 
 To generate the CDF graph, run next command with the number of iterations of the experiments:
-```bash
+```
 ./cdf.sh $ITERATION
 ```
 This creates a file named `cdf.eps`, containing the CDF graph.
@@ -67,41 +99,41 @@ For all subsequent experiments, the `user-memory` value was fixed at 4096.
 ### Figure 8 (Run-to-Run execution time)
 
 Run next commands for the run-to-run experiment results:
-```bash
+```
 cd rewind_serverless/atc24_ae/evaluation/runtorun
 ./run.sh $DOCKER_USER
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the execution time for each run is displayed in the terminal.
 An example of printed output is as follows:
-```bash
+```
 (run-to-run #1 of linpack) time: 38.623650 ms
 ```
 
 ### Figure 9 (Checkpoint time) and 10 (Rewind time)
 
 Run next commands for the checkpoint/rewind time:
-```bash
+```
 cd rewind_serverless/atc24_ae/evaluation/cr
 ./run.sh $DOCKER_USER
 ```
 It takes approximately 10 minutes for the results to come out.
 When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.
 An example of printed output is as follows:
-```bash
+```
 checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms
 ```
 
 ### Figure 5 (Resident Set Size)
 
 Run next commands for the size of the container's resident set size (RSS):
-```bash
+```
 cd rewind_serverless/atc24_ae/evaluation/rss
 ./run.sh $DOCKER_USER
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the RSS of the function is displayed in the terminal.
 An example of printed output is as follows:
-```bash
+```
 RSS of hello: 10800 kB
 ```
