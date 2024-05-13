@@ -71,6 +71,78 @@ If the REWIND configuration is successful, the following result should be displa
 The following section reproduces evaluations for Figure 5-10 in the paper.
 We first outline the experiments on REWIND's performance (Figure 6-10) and then describe how to profile REWIND's memory usage (Figure 5).
 
+Before get started, OpenWhisk configuration is necessary if your system has multiple NUMA nodes.
+To check NUMA nodes, run next commands:
+```
+$ lscpu | grep "NUMA node(s)"
+```
+If the printed results is larger than 1, configuring OpenWhisk to launch Docker containers on single NUMA node is required for removing NUMA effects.
+
+The following example is configuring OpenWhisk to launch Docker containers fixed to NUMA node 0.
+To check NUMA node 0, run next commands:
+```
+$ lscpu | grep "NUMA node0"
+```
+
+An example of printed output is as follows:
+```
+NUMA node0 CPU(s): 0,2,4,6,8,10,12,14,16,18,20,22
+```
+
+Code for launching Docker container in OpenWhisk is implemented in the file `rewind_serverless/openwhisk/core/invoker/src/main/scala/org/apache/openwhisk/core/containerpool/docker/DockerContainer.scala`
+Insert following code snippets starting from line 43:
+```
+object cpus {
+    var useCPU: Int = 0
+    def getCPU(): Int = {
+        useCPU = (useCPU + 2) % 24
+        if (useCPU == 0)
+                useCPU = 2
+        useCPU
+    }
+}
+```
+The value `24` in the code snippets means total CPU cores in example system.
+Modifing following code is also required:
+```
+val args = Seq(
+  "--cpu-shares",
+  cpuShares.toString,
+  "--memory",
+  s"${memory.toMB}m",
+  "--memory-swap",
+  s"${memory.toMB}m",
+  "--network",
+  network) ++
+  environmentArgs ++
+  dnsServers.flatMap(d => Seq("--dns", d)) ++
+  dnsSearch.flatMap(d => Seq("--dns-search", d)) ++
+  dnsOptions.flatMap(d => Seq(dnsOptString, d)) ++
+  name.map(n => Seq("--name", n)).getOrElse(Seq.empty) ++
+  params
+```
+Change above code to follows:
+```
+val useCPU = cpus.getCPU()
+val cpuset = Seq("--cpuset-cpus", useCPU,toString)
+val args = Seq(
+  "--cpu-shares",
+  cpuShares.toString,
+  "--memory",
+  s"${memory.toMB}m",
+  "--memory-swap",
+  s"${memory.toMB}m",
+  "--network",
+  network) ++
+  cpuset ++
+  environmentArgs ++
+  dnsServers.flatMap(d => Seq("--dns", d)) ++
+  dnsSearch.flatMap(d => Seq("--dns-search", d)) ++
+  dnsOptions.flatMap(d => Seq(dnsOptString, d)) ++
+  name.map(n => Seq("--name", n)).getOrElse(Seq.empty) ++
+  params
+```
+
 ### Figure 6 (throughput) and 7 (CDF of function end-to-end time)
 Before conducting the experiment, it is required to configure the memory size for the container pool in OpenWhisk.
 This can be achieved by adjusting the `user-memory` value under the `container-pool` section within the `rewind_serverless/openwhisk/core/invoker/src/main/resources/application.conf` file.
