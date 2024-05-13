@@ -79,8 +79,9 @@ In Figure 5, the `user-memory` values were configured as follows for each experi
 
 After configuring the `user-memory` size, run next commands for throughput results:
 ```
-cd rewind_serverless/atc24_ae/evaluation/throughput
-./run.sh $DOCKER_USER
+$ cd rewind_serverless/atc24_ae/evaluation/throughput
+$ sudo su
+# ./run.sh $DOCKER_USER
 ```
 It takes approximately 2 hours for the results to come out.
 To shorten the experiment time, you can decrease the `ITER_MAX` value in the `run.sh`, which is a value indicating the number of iterations.
@@ -92,7 +93,7 @@ An example of printed output is as follows:
 
 To generate the CDF graph, run next command with the number of iterations of the experiments:
 ```
-./cdf.sh $ITERATION
+$ ./cdf.sh $ITERATION
 ```
 This creates a file named `cdf.eps`, containing the CDF graph.
 
@@ -102,8 +103,9 @@ For all subsequent experiments, the `user-memory` value was fixed at 4096.
 
 Run next commands for the run-to-run experiment results:
 ```
-cd rewind_serverless/atc24_ae/evaluation/runtorun
-./run.sh $DOCKER_USER
+$ cd rewind_serverless/atc24_ae/evaluation/runtorun
+$ sudo su
+# ./run.sh $DOCKER_USER
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the execution time for each run is displayed in the terminal.
@@ -116,8 +118,9 @@ An example of printed output is as follows:
 
 Run next commands for the checkpoint/rewind time:
 ```
-cd rewind_serverless/atc24_ae/evaluation/cr
-./run.sh $DOCKER_USER
+$ cd rewind_serverless/atc24_ae/evaluation/cr
+$ sudo su
+#./run.sh $DOCKER_USER
 ```
 It takes approximately 10 minutes for the results to come out.
 When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.
@@ -130,8 +133,9 @@ checkpoint/rewind time of matmul: 0.251824 / 1.124923 ms
 
 Run next commands for the size of the container's resident set size (RSS):
 ```
-cd rewind_serverless/atc24_ae/evaluation/rss
-./run.sh $DOCKER_USER
+$ cd rewind_serverless/atc24_ae/evaluation/rss
+$ sudo su
+# ./run.sh $DOCKER_USER
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the RSS of the function is displayed in the terminal.
