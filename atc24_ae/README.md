@@ -3,7 +3,7 @@
 
 ## Title: A Secure, Fast, and Resource-Efficient Serverless Platform with Function REWIND
 
-Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Lee, and Jinkyu Jeong
+Author: Jaehyun Song, Bumsuk Kim, Minwoo Kwak, Byoungyoung Lee, Euiseong Seo, and Jinkyu Jeong
 
 Contact: Jaehyun Song (jaehyun.song@csi.skku.edu)
 
