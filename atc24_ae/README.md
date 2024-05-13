@@ -36,23 +36,20 @@ Running REWIND will require three terminals, the first one running the OpenWhisk
 To verify that the configuration of the REWIND has been successfully completed, run next commands in the first terminal:
 ```
 $ cd rewind_serverless/openwhisk
-$ sudo su
-# ./gradlew core:standalone:bootRun
+$ sudo ./gradlew core:standalone:bootRun
 ```
 
 Second terminal (do not close the 1st one):
 ```
 $ cd rewind_serverless/rewind
-$ sudo su
-# python3 file_rewinder.py
+$ sudo python3 file_rewinder.py
 ```
 
 Third terminal (do not close the 1st/2nd ones):
 ```
 $ cd rewind_serverless/atc24_ae/evaluation
-$ sudo su
-# wsk action update --memory 128 helloworld ./workloads/hello.py --docker $(DOCKER_USER)/ubuntu-python-rewind
-# wsk action invoke helloworld --result
+$ sudo wsk action update --memory 128 helloworld ./workloads/hello.py --docker $(DOCKER_USER)/ubuntu-python-rewind
+$ sudo wsk action invoke helloworld --result
 ```
 
 If the REWIND configuration is successful, the following result should be displayed in the third terminal.
@@ -152,8 +149,7 @@ In Figure 5, the `user-memory` values were configured as follows for each experi
 After configuring the `user-memory` size, run next commands for throughput results:
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/throughput
-$ sudo su
-# ./run.sh $(DOCKER_USER)
+$ sudo ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 2 hours for the results to come out.
 To shorten the experiment time, you can decrease the `ITER_MAX` value in the `run.sh`, which is a value indicating the number of iterations.
@@ -176,8 +172,7 @@ For all subsequent experiments, the `user-memory` value was fixed at 4096.
 Run next commands for the run-to-run experiment results:
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/runtorun
-$ sudo su
-# ./run.sh $(DOCKER_USER)
+$ sudo ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the execution time for each run is displayed in the terminal.
@@ -192,8 +187,7 @@ An example of printed output is as follows:
 Run next commands for the size of the container's resident set size (RSS):
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/rss
-$ sudo su
-# ./run.sh $(DOCKER_USER)
+$ sudo ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the RSS of the function is displayed in the terminal.
@@ -207,8 +201,7 @@ RSS of hello: 10800 kB
 Run next commands for the checkpoint/rewind time:
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/cr
-$ sudo su
-# ./run.sh $(DOCKER_USER)
+$ sudo ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 10 minutes for the results to come out.
 When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.

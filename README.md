@@ -89,10 +89,10 @@ $ uname -r
 
 Before setting the OpenWhisk, ensure the following packages are installed:
 ```
-# Install JAVA, NPM, and NodeJS
+/* Install JAVA, NPM, and NodeJS */
 $ sudo apt install openjdk-11-jre npm nodejs
 
-# Install Docker
+/* Install Docker */
 $ sudo apt-get install ca-certificates curl
 $ sudo install -m 0755 -d /etc/apt/keyrings
 $ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
@@ -119,33 +119,29 @@ To configure the Standalone OpenWhisk, run the following commands:
 ```
 $ wsk property set --apihost 'http://localhost:3233' --auth '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
 $ cd rewind_serverless/openwhisk
-$ sudo su
-# ./gradlew core:standalone:bootRun
+$ sudo ./gradlew core:standalone:bootRun
 ```
 
 After initiating OpenWhisk in standalone mode, the next step is to set up the OpenWhisk runtime.
 To do so, a Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```
-$ sudo su
-# docker login --username $(DOCKER_USER)
+$ sudo docker login --username $(DOCKER_USER)
 ```
 
 To build the runtime image for REWIND:
 ```
 $ cd rewind_serverless/runtime/mem-file
-$ sudo su
-# ./gradlew core:python3Action:distDocker
-# ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
+$ sudo ./gradlew core:python3Action:distDocker
+$ sudo ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
 ```
 
 (Optional) To profile REWIND, an additional runtime image is necessary.
 To build the runtime image for profiling REWIND:
 ```
 $ cd rewind_serverless/runtime/profiling
-$ sudo su
-# ./gradlew core:python3Action:distDocker
-# ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
+$ sudo ./gradlew core:python3Action:distDocker
+$ sudo ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
 ```
 
 ## 4. Applying REWIND
