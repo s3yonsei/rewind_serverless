@@ -56,6 +56,7 @@ $ sudo su
 ```
 
 If the REWIND configuration is successful, the following result should be displayed in the terminal.
+```
 {
     "TrueTime": 0.0000045299530029296875,
     "greeting": "Hello stranger!",
@@ -63,6 +64,7 @@ If the REWIND configuration is successful, the following result should be displa
     "runtime_start": 1715565302350417521,
     "startTime": 1715565302.3505592
 }
+```
 
 ## 3. Evaluation of REWIND
 
