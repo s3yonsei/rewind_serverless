@@ -123,7 +123,7 @@ To do so, Docker registry account, such as Docker Hub, is required.
 The following assumes that `DOCKER_USER` is properly configured with an appropriate value.
 ```
 $ sudo su
-# docker login --username $DOCKER_USER
+# docker login --username $(DOCKER_USER)
 ```
 
 To build the runtime image for REWIND:
@@ -131,7 +131,7 @@ To build the runtime image for REWIND:
 $ cd rewind_serverless/runtime/mem-file
 $ sudo su
 # ./gradlew core:python3Action:distDocker
-# ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+# ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
 ```
 
 (Optional) To profile REWIND, an additional runtime image is necessary.
@@ -140,7 +140,7 @@ To build the runtime image for profiling REWIND:
 $ cd rewind_serverless/runtime/profiling
 $ sudo su
 # ./gradlew core:python3Action:distDocker
-# ./gradlew distDocker -PdockerImagePrefix=$DOCKER_USER -PdockerRegistry=docker.io
+# ./gradlew distDocker -PdockerImagePrefix=$(DOCKER_USER) -PdockerRegistry=docker.io
 ```
 
 ## 4. Applying REWIND

@@ -51,7 +51,7 @@ In a new terminal (do not close the 1st/2nd ones):
 ```
 $ cd rewind_serverless/atc24_ae/evaluation
 $ sudo su
-# wsk action update --memory 128 helloworld ./workloads/hello.py --docker $DOCKER_USER/ubuntu-python-rewind
+# wsk action update --memory 128 helloworld ./workloads/hello.py --docker $(DOCKER_USER)/ubuntu-python-rewind
 # wsk action invoke helloworld --result
 ```
 
@@ -81,7 +81,7 @@ After configuring the `user-memory` size, run next commands for throughput resul
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/throughput
 $ sudo su
-# ./run.sh $DOCKER_USER
+# ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 2 hours for the results to come out.
 To shorten the experiment time, you can decrease the `ITER_MAX` value in the `run.sh`, which is a value indicating the number of iterations.
@@ -105,7 +105,7 @@ Run next commands for the run-to-run experiment results:
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/runtorun
 $ sudo su
-# ./run.sh $DOCKER_USER
+# ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the execution time for each run is displayed in the terminal.
@@ -120,7 +120,7 @@ Run next commands for the checkpoint/rewind time:
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/cr
 $ sudo su
-#./run.sh $DOCKER_USER
+# ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 10 minutes for the results to come out.
 When the experiment is finished, the checkpoint/rewind times are displayed in the terminal.
@@ -135,7 +135,7 @@ Run next commands for the size of the container's resident set size (RSS):
 ```
 $ cd rewind_serverless/atc24_ae/evaluation/rss
 $ sudo su
-# ./run.sh $DOCKER_USER
+# ./run.sh $(DOCKER_USER)
 ```
 It takes approximately 5 minutes for the results to come out.
 When the experiment is finished, the RSS of the function is displayed in the terminal.
