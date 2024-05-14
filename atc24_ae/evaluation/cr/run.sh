@@ -35,22 +35,18 @@ done
 
 for WORK in ${LIST[@]}
 do
-	cat ./results/${WORK}.out | grep CheckpointTime > temp_check.out
-	cat ./results/${WORK}.out | grep timestamp > temp_rewind.out
+	dmesg | grep REWIND > ./results/${WORK}.out
 
-	CHECK=0
+	cat ./results/${WORK}.out | grep checkpoint > temp_check.out
+	cat ./results/${WORK}.out | grep rewind > temp_rewind.out
+
+	CHECK=`cat temp_check.out | cut -d " " -f 4`
+
 	REWIND=0
 	for ((iter=1; iter <= 20; iter++));
 	do
-		temp=`cat temp_check.out | sed -n ${iter}p`
-		temp=`echo $temp | cut -d " " -f 2`
-		temp=`echo $temp | cut -d "," -f 1`
-
-		CHECK=`expr $CHECK + $temp`
-
 		temp=`cat temp_rewind.out | sed -n ${iter}p`
-		temp=`echo $temp | cut -d " " -f 2`
-		temp=`echo $temp | cut -d "," -f 1`
+		temp=`echo $temp | cut -d " " -f 4`
 
 		REWIND=`expr $CHECK + $temp`
 	done
