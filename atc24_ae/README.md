@@ -137,6 +137,7 @@ val args = Seq(
   name.map(n => Seq("--name", n)).getOrElse(Seq.empty) ++
   params
 ```
+For all experiments, one CPU core is allocated to each container.
 
 This section requires gnuplot.
 Install the gnuplot package:

@@ -5134,12 +5134,10 @@ void copy_pgt(struct mm_struct *mm, unsigned int rewind_flag)
 				current->rewind_reusable_size += vma->anon_size;
 				continue;
 			} else {
-				unsigned long long tmp = rdtsc();
 				struct vm_area_struct *prev = vma->vm_prev;
 				vma->rewindable = 0;
 				vm_munmap(vma->vm_start, vma->vm_end - vma->vm_start);
 				vma = prev;
-				current->rewind_unmap += rdtsc() - tmp;
 				continue;
 			}
 		}

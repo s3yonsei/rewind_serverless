@@ -34,6 +34,10 @@ SYSCALL_DEFINE1(checkpoint, unsigned long __user, num)	// syscall(548)
 {
 	struct task_struct *tsk = current;
 	unsigned long flags;
+	unsigned long checktime;
+
+	if (num > 0)
+		checktime = ktime_get_real_ns();
 
 	tsk->rewind_cp = 0;
 	tsk->rewind_cnt = 1;
@@ -49,6 +53,11 @@ SYSCALL_DEFINE1(checkpoint, unsigned long __user, num)	// syscall(548)
 
 	tsk->rewind_vma_reuse = 0;
 	tsk->rewind_vma_alloc = 0;
+
+	if (num > 0) {
+		checktime = ktime_get_real_ns() - checktime;
+		printk(KERN_INFO "(REWIND) checkpoint time: %lu\n", checktime);
+	}
 	
 	return 0;
 }
@@ -56,6 +65,10 @@ SYSCALL_DEFINE1(checkpoint, unsigned long __user, num)	// syscall(548)
 SYSCALL_DEFINE1(rewind, unsigned long __user, num)	// syscall(549)
 {
 	struct task_struct *tsk = current;
+	unsigned long rewindtime;
+
+	if (num > 0)
+		rewindtime = ktime_get_real_ns();
 
 	rewind_threads();
 	
@@ -80,6 +93,11 @@ SYSCALL_DEFINE1(rewind, unsigned long __user, num)	// syscall(549)
         tsk->rewind_vma_alloc = 0;
 	tsk->rewind_reused_page = 0;
 	tsk->rewind_reused_size = 0;
+
+	if (num > 0) {
+		rewindtime = ktime_get_real_ns() - rewindtime;
+		printk(KERN_INFO "(REWIND) rewind time: %lu\n", rewindtime);
+	}
 
 	return 0;
 }
